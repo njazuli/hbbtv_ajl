@@ -1,0 +1,146 @@
+{
+  "uuid": "5b8c8942-02d4-4f0b-b6d5-ef23ea52469d",
+  "name": "AJL 33",
+  "description": null,
+  "activated": true,
+  "time_start": "2019-01-08 00:00:00",
+  "time_end": "2019-01-31 23:59:00",
+  "identity_type": "ip",
+  "max_vote_cycle_type": 1,
+  "max_vote_per_cycle": 3,
+  "max_vote_per_option": 3,
+  "options": [
+    {
+      "uuid": "b4c11593-bb0b-438f-a822-700d26a1359c",
+      "name": "SITI SARAH",
+      "image_url": null,
+      "subject_id": 1213,
+      "field_collection": {
+        "LAGU": "SEMAKIN",
+        "KOMPOSER": "MERA UTAMA",
+        "PENULIS LIRIK": "MERA UTAMA"
+      }
+    },
+    {
+      "uuid": "c40aa5c0-433c-4f8f-a7a6-ac6cf6ccabcd",
+      "name": "ARA JOHARI",
+      "image_url": null,
+      "subject_id": 1212,
+      "field_collection": {
+        "LAGU": "BUNGA",
+        "KOMPOSER": "HANG NADIM, LAQ &  KADOK",
+        "PENULIS LIRIK": "HANG NADIM"
+      }
+    },
+    {
+      "uuid": "4e58ea88-6c23-47d3-a952-d34f0c16490c",
+      "name": "SYAMEL",
+      "image_url": null,
+      "subject_id": 1214,
+      "field_collection": {
+        "LAGU": "KAU PUN SAMA",
+        "KOMPOSER": "KIDD SANTHE & DJ BIGGIE OF MONSTER SOUND",
+        "PENULIS LIRIK": "SYAMEL"
+      }
+    },
+    {
+      "uuid": "ffa0dee9-d96c-44a6-ad58-2161d7f9b0de",
+      "name": "MISHA OMAR",
+      "image_url": null,
+      "subject_id": 1215,
+      "field_collection": {
+        "LAGU": "SAMPAI BILA",
+        "KOMPOSER": "SHARON PAUL",
+        "PENULIS LIRIK": "FEDTRI YAHYA & SHAH SHAMSHIRI"
+      }
+    },
+    {
+      "uuid": "663ccf41-7f71-4cf4-b76d-ece40fc1418c",
+      "name": "HAEL HUSAINI & DAYANG NURFAIZAH",
+      "image_url": null,
+      "subject_id": 1216,
+      "field_collection": {
+        "LAGU": "HARAM",
+        "KOMPOSER": "HAEL HUSAINI & EZRA KONG",
+        "PENULIS LIRIK": "HAEL HUSAINI & EZRA KONG"
+      }
+    },
+    {
+      "uuid": "9f5261ff-285d-4fe4-9419-885e4b293829",
+      "name": "KHAI BAHAR",
+      "image_url": null,
+      "subject_id": 1217,
+      "field_collection": {
+        "LAGU": "LULUH",
+        "KOMPOSER": "KHAI BAHAR",
+        "PENULIS LIRIK": "KHAI BAHAR"
+      }
+    },
+    {
+      "uuid": "6ff1983a-e029-44dc-a99c-80c2fe4c475d",
+      "name": "DE FAM",
+      "image_url": null,
+      "subject_id": 1218,
+      "field_collection": {
+        "LAGU": "BUNGA",
+        "KOMPOSER": "OMAR K & JOHN JEEVASINGAM",
+        "PENULIS LIRIK": "ALTIMET"
+      }
+    },
+    {
+      "uuid": "ef63b333-76f3-4321-a3a8-9143325bcbf8",
+      "name": "HAQIEM RUSLI FT. AMAN RA",
+      "image_url": null,
+      "subject_id": 1219,
+      "field_collection": {
+        "LAGU": "JATUH BANGUN",
+        "KOMPOSER": "HAQIEM RUSLI, OMAR K & IKHWAN FATANNA",
+        "PENULIS LIRIK": "HAQIEM RUSLI, OMAR K, IKHWAN FATANNA & AMAN RA"
+      }
+    },
+    {
+      "uuid": "3ccd6f29-141d-4fff-aef1-9c9efcc4d6c2",
+      "name": "AMYLEA X KAER",
+      "image_url": null,
+      "subject_id": 1220,
+      "field_collection": {
+        "LAGU": "TAK PERNAH HILANG",
+        "KOMPOSER": "FAROUK ROMAN",
+        "PENULIS LIRIK": "AMYLEA"
+      }
+    },
+    {
+      "uuid": "d751f1a5-4809-4631-8ed4-1d842b11ac04",
+      "name": "HAEL HUSAINI",
+      "image_url": null,
+      "subject_id": 1221,
+      "field_collection": {
+        "LAGU": "HAJAT",
+        "KOMPOSER": "HAEL HUSAINI & EZRA KONG",
+        "PENULIS LIRIK": "HAEL HUSAINI & EZRA KONG"
+      }
+    },
+    {
+      "uuid": "561c785d-46b9-4d05-9187-a32c5ab4652f",
+      "name": "SUFIAN SUHAIMI",
+      "image_url": null,
+      "subject_id": 1222,
+      "field_collection": {
+        "LAGU": "DI MATAMU",
+        "KOMPOSER": "SIRKHAN & RINKARNAEN",
+        "PENULIS LIRIK": "SIRKHAN & RINKARNAEN"
+      }
+    },
+    {
+      "uuid": "2e797e01-5e16-4594-9eda-61fca7fd278f",
+      "name": "SITI NORDIANA & JACLYN VICTOR",
+      "image_url": null,
+      "subject_id": 1223,
+      "field_collection": {
+        "LAGU": "NISAN CINTA",
+        "KOMPOSER": "HAEL HUSAINI, MIKE CHAN & EZRA KONG",
+        "PENULIS LIRIK": "HAEL HUSAINI, MIKE CHAN & EZRA KONG"
+      }
+    }
+  ]
+}
