@@ -3,15 +3,82 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 
 <head>
-    <title>Hbb TV Application</title>
-    <meta http-equiv="content-type" content="application/vnd.hbbtv.xhtml+xml" charset="UTF-8" />
-    <meta http-equiv="Pragma" content="no-cache" />
-    <script type="text/javascript" src="js/jquery-3.1.1.slim.min.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="js/keycodes.js"></script>
-    <script type="text/javascript" src="js/complements.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+<title>Hbb TV Application</title>
+<meta http-equiv="content-type" content="application/vnd.hbbtv.xhtml+xml" charset="UTF-8" />
+<meta http-equiv="Pragma" content="no-cache" />
+<script type="text/javascript" src="js/jquery-3.1.1.slim.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/keycodes.js"></script>
+<script type="text/javascript" src="js/complements.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+<style type="text/css">
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed');
+
+body{
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+img {
+  width: 100px;
+}
+
+a:focus {
+  border: 6px solid black;
+}
+
+.top_div{
+    position: absolute;
+    bottom: 0;
+    margin: 0 auto;
+    width: 100%;
+}
+#menulist_div{
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+.menulist_item{
+    display: inline-block;
+    width: 18%;
+    margin: 5px;
+    background: rgba(55,0,88,0.9);
+    padding: 5px;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.menulist_item:focus {
+     transition: all .2s ease-in-out; 
+     background: rgba( 255 ,59 ,128 , 0.9);
+     transform: scale(1.1);
+}
+
+.sixteen-nine {
+  position: relative;
+}
+.sixteen-nine:before {
+  display: block;
+  content: "";
+  width: 100%;
+  padding-top: 56.25%;
+}
+.sixteen-nine > .content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.textformenu{
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+
+</style>
+
 </head>
 
 <body>
