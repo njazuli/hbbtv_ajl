@@ -70,9 +70,11 @@ window.onload = function() {
 				console.log("DOWN - Move down focus");
 			break;
 			case VK_LEFT:
+				moveLeft();
 				console.log("LEFT - Move left focus");
 			break;
 			case VK_RIGHT:
+				moveRight();
 				console.log("RIGHT - Move right focus");
 			break;
 			case VK_ENTER:
@@ -80,6 +82,8 @@ window.onload = function() {
 			break;
 			case VK_0:
 				console.log("ZERO - Destroy app");
+				appManager.hide();
+				appManager.destroy();
 			break;																
 		}
 		e.preventDefault();
@@ -87,53 +91,64 @@ window.onload = function() {
 };
 
 
-//Move the focus one position down
-function moveDown(){
+// //Move the focus one position down
+// function moveDown(){
 	
-	var active = $('#active');
+// 	var active = $('#active');
 	
-	if (active.index() >= numShowingSongs-1 && checkList) {
-		if(pointerList < totalSongs - numShowingSongs) {
-			pointerList++; 
-			focusPosition++;
-			// loadSongs();
-			// updateInfo();
-		}
-	}else{
-		var next = active.next();
-		active.attr("id"," ");
-		next.attr("id","active");
-		focusPosition++;
-		// loadSongs();
-		// updateInfo();
-	}
+// 	if (active.index() >= numShowingSongs-1 && checkList) {
+// 		if(pointerList < totalSongs - numShowingSongs) {
+// 			pointerList++; 
+// 			focusPosition++;
+// 			// loadSongs();
+// 			// updateInfo();
+// 		}
+// 	}else{
+// 		var next = active.next();
+// 		active.attr("id"," ");
+// 		next.attr("id","active");
+// 		focusPosition++;
+// 		// loadSongs();
+// 		// updateInfo();
+// 	}
 
-}
+// }
 
-//Move the focus one position up
-function moveUp(){
+// //Move the focus one position up
+// function moveUp(){
 
-	var active = $("#active");
+// 	var active = $("#active");
 
-	if (active.index() < 1) {
-		if(pointerList > 0) {
-			pointerList--; 
-			focusPosition--;
-			// loadSongs();
-			// updateInfo();
-		}
+// 	if (active.index() < 1) {
+// 		if(pointerList > 0) {
+// 			pointerList--; 
+// 			focusPosition--;
+// 			// loadSongs();
+// 			// updateInfo();
+// 		}
 		
-	}else{
-		var previous = active.prev();
-		active.attr("id"," ");
-		previous.attr("id","active");
-		focusPosition--;
-		// loadSongs();
-		// updateInfo();
-	}
+// 	}else{
+// 		var previous = active.prev();
+// 		active.attr("id"," ");
+// 		previous.attr("id","active");
+// 		focusPosition--;
+// 		// loadSongs();
+// 		// updateInfo();
+// 	}
 
+// }
+
+
+function moveLeft() {
+	var index = $(":focus").index() + 1;
+	$('#menulist_div .menulist_item:nth-child(' + (index - 1) + ')').focus();
 }
 
+
+function moveRight() {
+	var index = $(":focus").index() + 1;
+	$('#menulist_div .menulist_item:nth-child(' + (index + 1) + ')').focus();
+}
 // function checkList(){
 // 	return ((pointerList + numShowingSongs) < 8);
 // }
