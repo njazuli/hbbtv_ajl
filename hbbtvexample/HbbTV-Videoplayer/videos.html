@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//HbbTV//1.1.1//EN" "http://www.hbbtv.org/dtd/HbbTV-1.1.1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+<title>Videos - Hbb TV Application</title>
+<meta http-equiv="content-type" content="application/vnd.hbbtv.xhtml+xml" charset="UTF-8" />
+<meta http-equiv="Pragma" content="no-cache" />
+<script type="text/javascript" src="js/jquery-3.1.1.slim.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/keycodes.js"></script>
+<script type="text/javascript" src="js/videos.js"></script>
+<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<link rel="stylesheet" type="text/css" href="css/style.css" />
+<style>
+a{
+	width: 100%;
+}
+
+img{
+	width: 100%;
+}
+
+#body {
+  margin: 10px 40px;
+}
+
+.full_width{
+	width: 100%;
+}
+
+.home-product-new-hldr {
+  position: relative;
+  width:1140px;
+}  
+  
+.home-product-new {
+  width:1140px;
+  overflow:hidden;
+}
+
+.home-grid.products-grid.products-grid--max-4 {
+  transition:-ms-transform 0.5s ease 0s, -webkit-transform 0.5s ease 0s, transform 0.5s ease 0s;
+  position:relative;
+  white-space:nowrap;
+}
+
+.item-container {
+    display: inline-block;
+    margin: 4px;
+    vertical-align: top;
+	width:274px;
+}  
+
+.slider-btn-hldr-left {
+	left: -32px;
+}
+
+.slider-btn-hldr-right {
+	right: -32px;
+}
+
+.slider-btn-hldr {
+    bottom: 0;
+    display: block;
+    padding: 0;
+	width: 24px;
+    position: absolute;
+    top: 40%;
+    z-index: 1;
+}
+
+.slider-btn {
+	background-color: transparent;
+    border: 0 none;
+    color: buttontext;
+    cursor: pointer;
+    display: block;
+}
+
+#left-btn {
+	    display: none;
+}
+
+.slider-btn svg{
+  width: 24px;
+  height: 24px;
+}
+  
+.products-grid .item {
+	margin-left: 0;
+	background: white; 
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+	float: left;
+}
+</style>
+</head>
+
+<body>
+    <object id="oipfAppMan" type="application/oipfApplicationManager"></object>
+    <object id="video" class="embed-responsive-item" type="video/broadcast" style="visibility: hidden;"></object>
+
+    <div id="background">
+        <img src="img/bg-ajl-33.png" alt="background" id="img-background" style="visibility: visible;"/>
+    </div>
+    <div id="menu" class="container" style="visibility: visible;">
+	      <div class="col-md-12">
+	      	<div class="col-md-3"><img src="img/AJL_Logo.png" style="width: 100%;margin: 0 auto;display: block;"></div>
+	      	<div class="col-md-7">
+      			<div class="embed-responsive embed-responsive-16by9">
+                  	<iframe src="https://www.youtube.com/embed/FglX8-KMRow" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe>
+              	</div>
+	        </div>
+	      	<div class="col-md-2">
+	      		<div class="middle_center">
+	      			<span class="textformenu">Videos</span>
+	      		</div>
+	      	</div>
+	      </div>
+
+		<!-- carousel -->
+
+		<div class="col-md-12" style="margin-top: 50px;">
+			<div id="body">
+				<div class="home-product-new-hldr">
+				    <div class="slider-btn-hldr slider-btn-hldr-left">
+				        <button id="left-btn" class="slider-btn" style="display: none;">
+				        <svg viewBox="0 0 256 256">
+				            <polyline fill="none" stroke="black" stroke-width="16" points="184,16 72,128 184,240"></polyline>
+				        </svg>
+				    </button>
+				    </div>
+				    <div class="home-product-new">
+				        <div id="carousel_list" class="home-grid products-grid products-grid--max-4" style="left: 0px;"></div>
+				    </div>
+				    <div class="slider-btn-hldr slider-btn-hldr-right">
+				        <button id="right-btn" class="slider-btn" style="display: block;">
+				        <svg viewBox="0 0 256 256">
+				            <polyline fill="none" stroke="black" stroke-width="16" points="72,16 184,128 72,240"></polyline>
+				        </svg>
+				    </button>
+				    </div>
+				</div>
+			<div>
+		</div>
+
+		<!-- carousel -->
+
+<script type="text/javascript">
+	
+</script>
+    </div> 
+</body>
+
+</html>

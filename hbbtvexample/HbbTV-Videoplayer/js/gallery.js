@@ -24,6 +24,7 @@ window.onload = function() {
 				console.log("RED - Play Video");
 			break;
 			case VK_BLUE:
+				goHome();
 				console.log("BLUE - Fullscreen");
 			break;
 			case VK_GREEN:
@@ -62,11 +63,14 @@ window.onload = function() {
 
 
 
+function goHome() {
+	window.location.href = 'index.html';
+}
+
 function moveLeft() {
 	var index = $(":focus").index() + 1;
 	$('#menulist_div .menulist_item:nth-child(' + (index - 1) + ')').focus();
 }
-
 
 function moveRight() {
 	var index = $(":focus").index() + 1;
