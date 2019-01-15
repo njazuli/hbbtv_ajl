@@ -7,7 +7,10 @@ window.allData = "global";   // Declare a global variable
 
 //When the window is load this function is executed
 window.onload = function() {
-	//localStorage.removeItem("videos");
+
+	var appManager = document.getElementById("oipfAppMan").getOwnerApplication(document);
+	appManager.show();
+	appManager.privateData.keyset.setValue(0x1 + 0x2 + 0x4 + 0x8 + 0x10 + 0x100);
 
 	//function for carousel
 	var listEl = document.querySelector('.home-grid.products-grid.products-grid--max-4');
@@ -46,9 +49,6 @@ window.onload = function() {
 	getData();
 	//MANAGER SETTINGS
 
-	var appManager = document.getElementById("oipfAppMan").getOwnerApplication(document);
-	appManager.show();
-	appManager.privateData.keyset.setValue(0x1 + 0x2 + 0x4 + 0x8 + 0x10 + 0x100);
 
 
 	//KEY LISTENERS
