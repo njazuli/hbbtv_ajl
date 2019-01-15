@@ -11,6 +11,8 @@ window.onload = function() {
 	var appManager = document.getElementById("oipfAppMan").getOwnerApplication(document);
 	appManager.show();
 	appManager.privateData.keyset.setValue(0x1 + 0x2 + 0x4 + 0x8 + 0x10 + 0x100);
+	getData();
+	//MANAGER SETTINGS
 
 	//function for carousel
 	var listEl = document.querySelector('.home-grid.products-grid.products-grid--max-4');
@@ -22,7 +24,7 @@ window.onload = function() {
 		
 		var totalChildren = listEl.querySelectorAll(".item-containerforfinalist").length;
 		dir === "left" ? ( count < 0 ? ++count : 0 ) : (count <= -(totalChildren-1) ? count : --count);
-		listEl.style.left = count * 20 + '%';
+		listEl.style.left = count * 18.75 + '%';
 		btnLeftEl.style.display = count < 0 ? "block" : "none";
 		// Here, 4 is the number displayed at any given time
 		btnRightEl.style.display = count > 2 -totalChildren ? "block" : "none";
@@ -46,20 +48,14 @@ window.onload = function() {
 	  slideImages("right");
 	});
 
-	getData();
-	//MANAGER SETTINGS
-
-
-
 	//KEY LISTENERS
 	document.addEventListener("keydown", function(e) {
 		switch(e.keyCode){
 			case VK_RED:
-				gotolink();
+				goHome();
 				console.log("RED - Play Video");
 			break;
 			case VK_BLUE:
-				goHome();
 				console.log("BLUE - Fullscreen");
 			break;
 			case VK_GREEN:
@@ -101,7 +97,7 @@ window.onload = function() {
 
 
 function goHome() {
-	window.location.href = 'index.html';
+	window.history.go(-1);
 }
 
 function goUp(){

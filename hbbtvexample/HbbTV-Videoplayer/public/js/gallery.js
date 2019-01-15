@@ -3,11 +3,18 @@
 //http://ccma-tva-int-abertis-live.hls.adaptive.level3.net/int/ngrp:tv3cat_tv/playlist.m3u8
 //--------------------------------------
 
-window.allData = "global";   // Declare a global variable
+// window.allDataFromFolder = "global";   // Declare a global variable
 
 //When the window is load this function is executed
 window.onload = function() {
-	//localStorage.removeItem("videos");
+	//MANAGER SETTINGS
+
+	var appManager = document.getElementById("oipfAppMan").getOwnerApplication(document);
+	appManager.show();
+	appManager.privateData.keyset.setValue(0x1 + 0x2 + 0x4 + 0x8 + 0x10 + 0x100);
+
+	getImagesfromFolder();
+	// getData();
 
 	//function for carousel
 	var listEl = document.querySelector('.home-grid.products-grid.products-grid--max-4');
@@ -42,24 +49,15 @@ window.onload = function() {
 	btnRightEl.addEventListener("click", function(e) {
 	  slideImages("right");
 	});
-	getImagesfromFolder();
-	getData();
-	//MANAGER SETTINGS
-
-	var appManager = document.getElementById("oipfAppMan").getOwnerApplication(document);
-	appManager.show();
-	appManager.privateData.keyset.setValue(0x1 + 0x2 + 0x4 + 0x8 + 0x10 + 0x100);
-
-
+	
 	//KEY LISTENERS
 	document.addEventListener("keydown", function(e) {
 		switch(e.keyCode){
 			case VK_RED:
-				gotolink();
+				goHome();
 				console.log("RED - Play Video");
 			break;
 			case VK_BLUE:
-				goHome();
 				console.log("BLUE - Fullscreen");
 			break;
 			case VK_GREEN:
@@ -101,7 +99,7 @@ window.onload = function() {
 
 
 function goHome() {
-	window.location.href = 'index.html';
+	window.history.go(-1);
 }
 
 function goUp(){
@@ -152,91 +150,28 @@ function getImagesfromFolder(){
 			   	img_name = $(this).attr("href");
 			  	img_list.push(img_name);
 			});
-
-			console.log('img_list' + JSON.stringify(img_list,null,2));
+			
+			loadCarousel(img_list);
         }
     });
 
 }
 
 
-function getData(){
-	var url = "data/finalist.json";
-    var xmlhttp = new XMLHttpRequest();
-    
-    xmlhttp.onreadystatechange=function() {
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-          editdata(JSON.parse(xmlhttp.responseText));
-        }
-    }
-
-    xmlhttp.overrideMimeType("application/json");
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-
-}
-
-function editdata(response){
-	
-	var videos_array = [];
-
-	var arrayfromJSON = response.options;
-
-	arrayfromJSON.forEach(function(element) {
-
-	  	var image_url = element.image_url;
-	  	var LAGU = element.field_collection.LAGU;
-	  	var Artist = element.name;
-	  	var KOMPOSER = element.field_collection.KOMPOSER;
-	  	var PENULIS_LIRIK = element.field_collection.PENULIS_LIRIK;
-
-
-
-		var data_from_json = {
-			"image_url" : image_url,
-			"Artist" : Artist,
-			"LAGU" :  LAGU,
-			"KOMPOSER" : KOMPOSER,
-			"PENULIS_LIRIK" : PENULIS_LIRIK
-		}
-
-		videos_array.push(data_from_json);
-		
-	});
-	allData = videos_array; //set to global variable
-	loadCarousel(videos_array);
-}
-
 
 function loadCarousel(data){
-	var img_src;
 	var construct_data = data;
 
-
-	// //get element id to be append 
+	//get element id to be append 
 	var placeholder = document.getElementById("carousel_list");
-	placeholder.innerHTML = " ";
+	placeholder.innerHTML = "";
 
 	for( var i = 0 ; i < construct_data.length ; i++ ){
-		img_src = construct_data[i].image_url;
-		// title =  construct_data[i].title;
-		// video_id =  construct_data[i].video_id;
-
-		//play video for first id first
-		if( i === 0 ){
-			getDataforFinalist(construct_data[i]);
-		}
 
 		//create first div
 		var videos_div = document.createElement("div");
 		videos_div.className = "item-containerforfinalist";
 		videos_div.setAttribute('tabindex', '0');
-		
-
-		//create a tag
-		// var videos_a_tag = document.createElement("a");
-		// videos_a_tag.setAttribute('href', video_id);
-
 
 		//create second div
 		var item_div = document.createElement("div");
@@ -244,68 +179,16 @@ function loadCarousel(data){
 
 		//create image tag
 		var item_img = document.createElement("img");
-		item_img.src = img_src;
+		item_img.src = 'img/gallery/' + construct_data[i];
 		item_img.setAttribute("alt","ajl33");
 
-		//create div for voting
-		var voting_on_hover = document.createElement("div");
-		voting_on_hover.setAttribute("id","hoverbar");
-
-		var img_for_bluebutton = document.createElement("img");
-		img_for_bluebutton.className =  "img_blue_button";
-		img_for_bluebutton.src = "img/vote-btn.png";
-
-		var span_for_vote = document.createElement("span");
-		span_for_vote.className =  "textforvote";
-
-		voting_on_hover.appendChild(img_for_bluebutton);
-		// item_img.className = "sixteen-nine";
-
-		//create div for p
-		// var p_div = document.createElement("div");
-		// p_div.className = "introsub full_width";
-
-		// //create p tag for title
-		// var item_title = document.createElement("p");
-		// item_title.textContent = title;
-
-
-
-		//append img in second div
-		// videos_a_tag.appendChild(item_div);
 		item_div.appendChild(item_img);
-		item_div.appendChild(voting_on_hover);
-
-		//append second div and p inside a
 		videos_div.appendChild(item_div);
-		// videos_div.appendChild(p_div);
-		// videos_div.appendChild(item_title);
-
-		//append a inside first div
-		//videos_div.appendChild(videos_a_tag);
-
 
 		placeholder.appendChild(videos_div);
 	}
 
+
 	$('.item-containerforfinalist:nth-child(1)').focus();
 }
-
-function separateData(imgsrc){
-
-	var datax = allData.filter(x => x.image_url === imgsrc);
-	getDataforFinalist(datax[0]);
-	// console.log('global' + JSON.stringify(datax,null,2))
-}
-
-
-function getDataforFinalist(data){
-	document.getElementById('finalist_img').src = data.image_url; 
-	document.getElementById('finalistTitle').innerHTML = data.LAGU; 
-	document.getElementById('finalistArtist').innerHTML = data.Artist; 
-	document.getElementById('finalistkomposer').innerHTML = data.KOMPOSER; 
-	document.getElementById('finalistlyricwriter').innerHTML = data.PENULIS_LIRIK; 
-}
-
-
 

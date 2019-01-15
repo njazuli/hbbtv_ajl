@@ -13,17 +13,19 @@ window.onload = function() {
 	//MANAGER SETTINGS
 	var appManager = document.getElementById("oipfAppMan").getOwnerApplication(document);
 	appManager.show();
-	appManager.privateData.keyset.setValue(0x1 + 0x2 + 0x4 + 0x8 + 0x10 + 0x100);
+	appManager.privateData.keyset.setValue(0x1+0x2+0x4+0x8+0x10+0x20+0x100);
 
 
 	//KEY LISTENERS
 	document.addEventListener("keydown", function(e) {
 		switch(e.keyCode){
 			case VK_RED:
-				gotolink();
+				appManager.hide();
+				appManager.destroy();
 				console.log("RED - Play Video");
 			break;
 			case VK_BLUE:
+				gotolink();
 				console.log("BLUE - Fullscreen");
 			break;
 			case VK_GREEN:

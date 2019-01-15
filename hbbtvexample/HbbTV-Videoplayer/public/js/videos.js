@@ -6,7 +6,12 @@
 
 //When the window is load this function is executed
 window.onload = function() {
-	//localStorage.removeItem("videos");
+	getData();
+	//MANAGER SETTINGS
+
+	var appManager = document.getElementById("oipfAppMan").getOwnerApplication(document);
+	appManager.show();
+	appManager.privateData.keyset.setValue(0x1+0x2+0x4+0x8+0x10+0x20+0x100);
 
 	//function for carousel
 	var listEl = document.querySelector('.home-grid.products-grid.products-grid--max-4');
@@ -39,23 +44,15 @@ window.onload = function() {
 	  slideImages("right");
 	});
 
-	getData();
-	//MANAGER SETTINGS
-
-	var appManager = document.getElementById("oipfAppMan").getOwnerApplication(document);
-	appManager.show();
-	appManager.privateData.keyset.setValue(0x1 + 0x2 + 0x4 + 0x8 + 0x10 + 0x100);
-
-
 	//KEY LISTENERS
 	document.addEventListener("keydown", function(e) {
 		switch(e.keyCode){
 			case VK_RED:
-				gotolink();
+				goHome();
 				console.log("RED - Play Video");
 			break;
 			case VK_BLUE:
-				goHome();
+				gotolink();
 				console.log("BLUE - Fullscreen");
 			break;
 			case VK_GREEN:
@@ -97,7 +94,7 @@ window.onload = function() {
 
 
 function goHome() {
-	window.location.href = 'index.html';
+	window.history.go(-2);
 }
 
 function goUp(){
@@ -248,7 +245,7 @@ function playVideo(id) {
 	var playerid = document.getElementById('player');
 	var static_url = "https://www.youtube.com/embed/"
 	
-	playerid.src = static_url + id + '?autoplay=1&controls=0';
+	playerid.src = static_url + id + '?autoplay=1&controls=0&disablekb=1';
 }
 
 
