@@ -3,17 +3,16 @@
 //http://ccma-tva-int-abertis-live.hls.adaptive.level3.net/int/ngrp:tv3cat_tv/playlist.m3u8
 //--------------------------------------
 
-window.allData = "global";   // Declare a global variable
-
 //When the window is load this function is executed
 window.onload = function() {
-	//MANAGER SETTINGS
 
+	//MANAGER SETTINGS
 	var appManager = document.getElementById("oipfAppMan").getOwnerApplication(document);
 	appManager.show();
 	appManager.privateData.keyset.setValue(0x1 + 0x2 + 0x4 + 0x8 + 0x10 + 0x100);
 
 	getData();
+	
 	//function for carousel
 	var listEl = document.querySelector('.home-grid.products-grid.products-grid--max-4');
 	var btnLeftEl = document.querySelector('#left-btn');
@@ -36,8 +35,17 @@ window.onload = function() {
 
 		//to change the image
 		var imgsrc = $('.item-containerforfinalist:nth-child(' + currentcount + ') .item img').attr("src");
+		var artist_span = $('.item-containerforfinalist:nth-child(' + currentcount + ') .item #artist_span').text();
+		var lagu_span = $('.item-containerforfinalist:nth-child(' + currentcount + ') .item #lagu_span').text(); 
+		var komposer_span = $('.item-containerforfinalist:nth-child(' + currentcount + ') .item #composer_span').text(); 
+		var lirik_span = $('.item-containerforfinalist:nth-child(' + currentcount + ') .item #lyric_span').text(); 
 
-		separateData(imgsrc);
+		document.getElementById('finalist_img').src = imgsrc; 
+		document.getElementById('finalistTitle').innerHTML = lagu_span; 
+		document.getElementById('finalistArtist').innerHTML = artist_span;
+		document.getElementById('finalistkomposer').innerHTML = komposer_span; 
+		document.getElementById('finalistlyricwriter').innerHTML = lirik_span;
+		// separateData(imgsrc);
 		
 	}
 
@@ -84,7 +92,6 @@ window.onload = function() {
 				console.log("RIGHT - Move right focus");
 			break;
 			case VK_ENTER:
-				gotolink();
 				console.log("ENTER - Ok pressed");
 			break;
 			case VK_0:
@@ -99,7 +106,8 @@ window.onload = function() {
 
 
 function goHome() {
-	window.history.go(-1);
+	// window.history.go(-1);
+	window.location.replace("index.html");
 }
 
 function goUp(){
@@ -178,7 +186,6 @@ function editdata(response){
 		videos_array.push(data_from_json);
 		
 	});
-	allData = videos_array; //set to global variable
 	loadCarousel(videos_array);
 }
 
@@ -222,6 +229,33 @@ function loadCarousel(data){
 		item_img.src = img_src;
 		item_img.setAttribute("alt","ajl33");
 
+		//create span and hidden
+		var span1 = document.createElement("span");
+		span1.setAttribute("id","artist_span");
+		span1.className = "hide";
+		span1.innerHTML = construct_data[i].Artist;
+
+		//create span and hidden
+		var span2 = document.createElement("span");
+		span2.setAttribute("id","lagu_span");
+		span2.className = "hide";
+		span2.innerHTML = construct_data[i].LAGU;
+
+		//create span and hidden
+		var span3 = document.createElement("span");
+		span3.setAttribute("id","composer_span");
+		span3.className = "hide";
+		span3.innerHTML = construct_data[i].KOMPOSER;
+
+		//create span and hidden
+		var span4 = document.createElement("span");
+		span4.setAttribute("id","lyric_span");
+		span4.className = "hide";
+		span4.innerHTML = construct_data[i].PENULIS_LIRIK;
+
+
+
+
 		//create div for voting
 		var voting_on_hover = document.createElement("div");
 		voting_on_hover.setAttribute("id","hoverbar");
@@ -249,6 +283,10 @@ function loadCarousel(data){
 		//append img in second div
 		// videos_a_tag.appendChild(item_div);
 		item_div.appendChild(item_img);
+		item_div.appendChild(span1);
+		item_div.appendChild(span2);
+		item_div.appendChild(span3);
+		item_div.appendChild(span4);
 		item_div.appendChild(voting_on_hover);
 
 		//append second div and p inside a
@@ -266,12 +304,11 @@ function loadCarousel(data){
 	$('.item-containerforfinalist:nth-child(1)').focus();
 }
 
-function separateData(imgsrc){
+// function separateData(imgsrc){
 
-	var datax = allData.filter(x => x.image_url === imgsrc);
-	getDataforFinalist(datax[0]);
-	// console.log('global' + JSON.stringify(datax,null,2))
-}
+// 	var datax = allData.filter(x => x.image_url === imgsrc);
+// 	getDataforFinalist(datax[0]);
+// }
 
 
 function getDataforFinalist(data){

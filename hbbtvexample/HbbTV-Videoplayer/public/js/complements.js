@@ -7,21 +7,16 @@
 
 //When the window is load this function is executed
 window.onload = function() {
-	console.log("in");
-	//localStorage.removeItem("videos");
-
 	//MANAGER SETTINGS
 	var appManager = document.getElementById("oipfAppMan").getOwnerApplication(document);
 	appManager.show();
-	appManager.privateData.keyset.setValue(0x1+0x2+0x4+0x8+0x10+0x20+0x100);
-
-
+	appManager.privateData.keyset.setValue(0x1 + 0x2 + 0x4 + 0x8 + 0x10 + 0x100);
 	//KEY LISTENERS
 	document.addEventListener("keydown", function(e) {
 		switch(e.keyCode){
 			case VK_RED:
 				appManager.hide();
-				appManager.destroy();
+				destroyer();
 				console.log("RED - Play Video");
 			break;
 			case VK_BLUE:
@@ -55,13 +50,17 @@ window.onload = function() {
 			case VK_0:
 				console.log("ZERO - Destroy app");
 				appManager.hide();
-				appManager.destroy();
+				destroyer();
 			break;																
 		}
 		e.preventDefault();
 	}, false);
 };
 
+
+function destroyer(){
+  app = null;
+}
 
 
 function moveLeft() {

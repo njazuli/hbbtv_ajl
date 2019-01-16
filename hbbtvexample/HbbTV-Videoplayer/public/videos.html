@@ -10,7 +10,8 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script>
 <script type="text/javascript" src="js/keycodes.js"></script>
 <script type="text/javascript" src="js/videos.js"></script>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <style>
 a{
@@ -159,14 +160,32 @@ img{
 /* IE7 */
 *:first-child+html .introsub { white-space: pre  } 
 </style>
+
+<!-- Google Tag Manager -->
+<script type="text/javascript">
+    (function(w,d,s,l,i){
+        w[l]=w[l]||[];w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0]
+        var j=d.createElement(s)
+        var dl= (l!='dataLayer') ? '&l=' +l:'';
+        j.async=true;
+        j.src= 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-WBQP55N');
+</script>
+<!-- End Google Tag Manager -->
+
 </head>
 
 <body>
-    <object id="oipfAppMan" type="application/oipfApplicationManager"></object>
-    <object id="video" class="embed-responsive-item" type="video/broadcast" style="visibility: hidden;"></object>
+<noscript>
+<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WBQP55N"
+        height="0" width="0" style="display:none;visibility:hidden">
+</iframe>
+</noscript>
+    <object id="oipfAppMan" type="application/oipfApplicationManager" style="visibility: visible;"></object>
 
     <div id="background">
-        <img src="img/bg-ajl-33.png" alt="background" id="img-background" style="visibility: visible;"/>
+        <img src="img/bg-ajl-33.jpg" alt="background" id="img-background" style="visibility: visible;"/>
     </div>
     <div id="menu" class="container" style="visibility: visible;">
 	      <div class="col-md-12">
@@ -209,7 +228,7 @@ img{
           </div>
           <div class="eachbutton">
             <img src="img/icon/icon/red-btn.png">
-            <p>Exit</p>
+            <p>Back</p>
           </div>
       </div>
 </body>

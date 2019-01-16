@@ -7,11 +7,12 @@
 //When the window is load this function is executed
 window.onload = function() {
 	getData();
+	
 	//MANAGER SETTINGS
-
 	var appManager = document.getElementById("oipfAppMan").getOwnerApplication(document);
 	appManager.show();
-	appManager.privateData.keyset.setValue(0x1+0x2+0x4+0x8+0x10+0x20+0x100);
+	appManager.privateData.keyset.setValue(0x1 + 0x2 + 0x4 + 0x8 + 0x10 + 0x100);
+
 
 	//function for carousel
 	var listEl = document.querySelector('.home-grid.products-grid.products-grid--max-4');
@@ -94,7 +95,8 @@ window.onload = function() {
 
 
 function goHome() {
-	window.history.go(-2);
+	// window.history.go(-2);
+	window.location.replace("index.html");
 }
 
 function goUp(){
@@ -130,7 +132,8 @@ function gotolink(){
 }
 
 function getData(){
-	var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLaXOt0nSNIubO1hHYzO3RhA03tP4o_BIF&key=AIzaSyDgDwO23Pl4-phr7S4vk59WRkxA3Cqh9P8&maxResults=50";
+	// var url = "https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=PLaXOt0nSNIubO1hHYzO3RhA03tP4o_BIF&key=AIzaSyDgDwO23Pl4-phr7S4vk59WRkxA3Cqh9P8&maxResults=50";
+    var url = "data/ajlvideos.json";
     var xmlhttp = new XMLHttpRequest();
     
     xmlhttp.onreadystatechange=function() {

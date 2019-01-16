@@ -7,15 +7,14 @@
 
 //When the window is load this function is executed
 window.onload = function() {
+	
 	//MANAGER SETTINGS
-
 	var appManager = document.getElementById("oipfAppMan").getOwnerApplication(document);
 	appManager.show();
 	appManager.privateData.keyset.setValue(0x1 + 0x2 + 0x4 + 0x8 + 0x10 + 0x100);
 
-	getImagesfromFolder();
-	// getData();
-
+	getData();
+	
 	//function for carousel
 	var listEl = document.querySelector('.home-grid.products-grid.products-grid--max-4');
 	var btnLeftEl = document.querySelector('#left-btn');
@@ -33,13 +32,13 @@ window.onload = function() {
 
 		var currentcount = (count* -1) +1;
 
-		console.log(count * -1);
 		$('.item-containerforfinalist:nth-child(' + currentcount + ')').focus();
 
 		//to change the image
 		var imgsrc = $('.item-containerforfinalist:nth-child(' + currentcount + ') .item img').attr("src");
 
-		separateData(imgsrc);
+		changeImg(imgsrc);
+		
 		
 	}
 
@@ -84,7 +83,6 @@ window.onload = function() {
 				console.log("RIGHT - Move right focus");
 			break;
 			case VK_ENTER:
-				gotolink();
 				console.log("ENTER - Ok pressed");
 			break;
 			case VK_0:
@@ -99,7 +97,8 @@ window.onload = function() {
 
 
 function goHome() {
-	window.history.go(-1);
+	// window.history.go(-1);
+	window.location.replace("index.html");
 }
 
 function goUp(){
@@ -135,38 +134,61 @@ function gotolink(){
 	console.log('okay or red button is clicked' + href);
 }
 
-function getImagesfromFolder(){
-	var img_list = [];
-	var img_name;
-	var fileExt = [".png",".jpg",".gif"];
-
-    $.ajax({
-        //This will retrieve the contents of the folder if the folder is configured as 'browsable'
-        url: 'img/gallery/',
-        success: function (data) {
-
-			//List all png or jpg or gif file names in the page
-			$(data).find("a:contains(" + fileExt[0] + "),a:contains(" + fileExt[1] + "),a:contains(" + fileExt[2] + ")").each(function () {
-			   	img_name = $(this).attr("href");
-			  	img_list.push(img_name);
-			});
-			
-			loadCarousel(img_list);
+function getData(){
+	var url = "data/gallery.json";
+    var xmlhttp = new XMLHttpRequest();
+    
+    xmlhttp.onreadystatechange=function() {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+          loadCarousel(JSON.parse(xmlhttp.responseText));
         }
-    });
+    }
+
+    xmlhttp.overrideMimeType("application/json");
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
 
 }
+
+// function getImagesfromFolder(){
+// 	var img_list = [];
+// 	var img_name;
+// 	var fileExt = [".png",".jpg",".gif"];
+
+//     $.ajax({
+//         //This will retrieve the contents of the folder if the folder is configured as 'browsable'
+//         url: 'img/gallery/',
+//         success: function (data) {
+
+// 			//List all png or jpg or gif file names in the page
+// 			$(data).find("a:contains(" + fileExt[0] + "),a:contains(" + fileExt[1] + "),a:contains(" + fileExt[2] + ")").each(function () {
+// 			   	img_name = $(this).attr("href");
+// 			  	img_list.push(img_name);
+
+// 			  	console.log('img_name' + img_list);
+// 			});
+			
+// 			loadCarousel(img_list);
+//         }
+//     });
+
+// }
 
 
 
 function loadCarousel(data){
-	var construct_data = data;
+	var construct_data = data.item;
 
 	//get element id to be append 
 	var placeholder = document.getElementById("carousel_list");
 	placeholder.innerHTML = "";
 
 	for( var i = 0 ; i < construct_data.length ; i++ ){
+
+		if(i === 0){
+			var imglink = construct_data[i].image_url;
+			changeImg(imglink);
+		}
 
 		//create first div
 		var videos_div = document.createElement("div");
@@ -179,7 +201,7 @@ function loadCarousel(data){
 
 		//create image tag
 		var item_img = document.createElement("img");
-		item_img.src = 'img/gallery/' + construct_data[i];
+		item_img.src = construct_data[i].image_url;
 		item_img.setAttribute("alt","ajl33");
 
 		item_div.appendChild(item_img);
@@ -192,3 +214,8 @@ function loadCarousel(data){
 	$('.item-containerforfinalist:nth-child(1)').focus();
 }
 
+function changeImg(data){
+	var imgindiv = document.getElementById('finalist_img');
+	imgindiv.src = data;
+	imgindiv.setAttribute("alt","ajl33");
+}
