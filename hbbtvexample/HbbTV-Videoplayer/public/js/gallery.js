@@ -21,18 +21,29 @@ window.onload = function() {
 	var btnRightEl = document.querySelector('#right-btn');
 	var count = 0;
 
+	
+	$('.item-containerforfinalist:nth-child(1) .item').addClass( "active" );
+
 	function slideImages(dir){
 		
 		var totalChildren = listEl.querySelectorAll(".item-containerforfinalist").length;
 		dir === "left" ? ( count < 0 ? ++count : 0 ) : (count <= -(totalChildren-1) ? count : --count);
 		listEl.style.left = count * 20 + '%';
-		btnLeftEl.style.display = count < 0 ? "block" : "none";
+		btnLeftEl.style.display = count < 0 ? "none" : "none";
 		// Here, 4 is the number displayed at any given time
-		btnRightEl.style.display = count > 2 -totalChildren ? "block" : "none";
+		btnRightEl.style.display = count > 2-totalChildren ? "none" : "none";
 
 		var currentcount = (count* -1) +1;
 
-		$('.item-containerforfinalist:nth-child(' + currentcount + ')').focus();
+		// $('.item-containerforfinalist:nth-child(' + currentcount + ')').addClass( "active" );
+		if( dir === "left"){
+			$('.item-containerforfinalist:nth-child(' + (currentcount + 1) + ') .item').removeClass( "active" );
+			$('.item-containerforfinalist:nth-child(' + currentcount  + ') .item').addClass( "active" );
+		}else{
+			$('.item-containerforfinalist:nth-child(' + (currentcount - 1) + ') .item').removeClass( "active" );
+			$('.item-containerforfinalist:nth-child(' + currentcount  + ') .item').addClass( "active" );
+		}
+
 
 		//to change the image
 		var imgsrc = $('.item-containerforfinalist:nth-child(' + currentcount + ') .item img').attr("src");
@@ -211,7 +222,6 @@ function loadCarousel(data){
 	}
 
 
-	$('.item-containerforfinalist:nth-child(1)').focus();
 }
 
 function changeImg(data){

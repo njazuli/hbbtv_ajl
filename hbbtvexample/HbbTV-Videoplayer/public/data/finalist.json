@@ -1,14 +1,17 @@
 {
   "uuid": "5b8c8942-02d4-4f0b-b6d5-ef23ea52469d",
   "name": "AJL 33",
-  "description": "MISHAOMAR.jpg",
+  "description": null,
   "activated": true,
   "time_start": "2019-01-08 00:00:00",
   "time_end": "2019-01-31 23:59:00",
   "identity_type": "ip",
   "max_vote_cycle_type": 1,
-  "max_vote_per_cycle": 3,
-  "max_vote_per_option": 3,
+  "max_vote_per_cycle": 0,
+  "max_vote_per_option": 0,
+  "poll_api_base_url": "https://poll.mediaprima.com.my", 
+  "client_id": 5,
+  "client_secret": "VANEEYw242MXdoP89UQLx3zUEX8Yzonegjcyftck",
   "options": [
     {
       "uuid": "b4c11593-bb0b-438f-a822-700d26a1359c",

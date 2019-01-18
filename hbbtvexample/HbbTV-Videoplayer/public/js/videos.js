@@ -24,10 +24,10 @@ window.onload = function() {
 		
 		var totalChildren = listEl.querySelectorAll(".item-container").length;
 		dir === "left" ? ( count < 0 ? ++count : 0 ) : (count <= -(totalChildren-1) ? count : --count);
-		listEl.style.left = count * 284 + 'px';
-		btnLeftEl.style.display = count < 0 ? "block" : "none";
+		listEl.style.left = count * 21 + '%';
+		btnLeftEl.style.display = count < 0 ? "none" : "none";
 		// Here, 4 is the number displayed at any given time
-		btnRightEl.style.display = count > 2 -totalChildren ? "block" : "none";
+		btnRightEl.style.display = count > 2 -totalChildren ? "none" : "none";
 
 		var currentcount = (count* -1) +1;
 
@@ -248,7 +248,7 @@ function playVideo(id) {
 	var playerid = document.getElementById('player');
 	var static_url = "https://www.youtube.com/embed/"
 	
-	playerid.src = static_url + id + '?autoplay=1&controls=0&disablekb=1';
+	playerid.src = static_url + id + '?showinfo=1&cc_load_policy=1&autoplay=1&controls=0&disablekb=1&fs=0';
 }
 
 

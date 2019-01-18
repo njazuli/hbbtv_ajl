@@ -1,6 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE html PUBLIC "-//HbbTV//1.1.1//EN" "http://www.hbbtv.org/dtd/HbbTV-1.1.1.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<!-- <?xml version="1.0" encoding="UTF-8" ?> -->
+<!-- <!DOCTYPE html PUBLIC "-//HbbTV//1.1.1//EN" "http://www.hbbtv.org/dtd/HbbTV-1.1.1.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en"> -->
+
+<!--As DOCTYPE either the strict XHTML declaration or "-//HbbTV//1.1.1//EN" "http://www.hbbtv.org/dtd/HbbTV-1.1.1.dtd" shall be used as described in the HbbTV-standard: A.2.6.2.-->
+<!DOCTYPE html PUBLIC "-//HbbTV//1.2.1//EN" "http://www.hbbtv.org/dtd/HbbTV-1.2.1.dtd">
+<!--Required XML-namespace as described in the HbbTV-standard: A.2.6.2.-->
+<html xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
 <title>Videos - Hbb TV Application</title>
@@ -11,7 +16,7 @@
 <script type="text/javascript" src="js/keycodes.js"></script>
 <script type="text/javascript" src="js/videos.js"></script>
 <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <style>
 a{
@@ -32,16 +37,16 @@ img{
 
 .home-product-new-hldr {
   position: relative;
-  width:1140px;
+  width:100%;
 }  
   
 .home-product-new {
-  width:1140px;
+  width:100%;
   overflow:hidden;
 }
 
 .home-grid.products-grid.products-grid--max-4 {
-  transition:-ms-transform 0.5s ease 0s, -webkit-transform 0.5s ease 0s, transform 0.5s ease 0s;
+  /*transition:-ms-transform 0.5s ease 0s, -webkit-transform 0.5s ease 0s, transform 0.5s ease 0s;*/
   position:relative;
   white-space:nowrap;
 }
@@ -50,7 +55,7 @@ img{
     display: inline-block;
     margin: 10px;
     vertical-align: top;
-	width: 274px;
+	width: 21%;
 	background: rgba(55,0,88,0.9);
 }  
 
@@ -73,11 +78,11 @@ img{
 }
 
 .slider-btn {
-	background-color: transparent;
+	/*background-color: transparent;
     border: 0 none;
     color: buttontext;
     cursor: pointer;
-    display: block;
+    display: block;*/
 }
 
 #left-btn {
@@ -103,9 +108,9 @@ img{
 }
 
 .item-container:focus{
-	transition: all .2s ease-in-out; 
+	/*transition: all .2s ease-in-out; */
      background: rgba( 255 ,59 ,128 , 0.9);
-     transform: scale(1.1);
+     /*transform: scale(1.1);*/
 }
 
 #player:focus{
@@ -117,15 +122,22 @@ img{
   width: 100%;
   padding-top: 56.25%;
   position: relative;
+  overflow: hidden;
 }
 
 .scale-16_9 img{
-  position: absolute;
+ /* position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover;*/
+
+  position: absolute;
+  top: -22px;
+  left: 0;
+  width: 100%;
+  background-size: cover;
 }
 
 .introsub {
@@ -154,6 +166,9 @@ img{
 	float: right;
 	display: inline-block;
 }
+
+.video-wrapper {position: relative; padding-bottom: 56.25%; /* 16:9 */  padding-top: 25px;-webkit-transform: scaleX(1); -moz-transform: scaleX(1);-ms-transform: scaleX(1);}
+.video-wrapper iframe {position: absolute; top: 0; left: 0; width: 100%; height: 100%;}
 /* IE6 and below */
 * html .introsub  { white-space: pre  }
 
@@ -191,8 +206,8 @@ img{
 	      <div class="col-md-12">
 	      	<div class="col-md-3"><img src="img/AJL-Logo.png" style="width: 100%;margin: 0 auto;display: block;"></div>
 	      	<div class="col-md-7">
-      			<div class="embed-responsive embed-responsive-16by9">
-                  	<iframe id="player" src="" frameborder="0" autoplay="true" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe>
+      			<div class="video-wrapper" style="width: 100% !important;">
+                  	<iframe id="player" width="1920px" height="1080px" src="" frameborder="0" autoplay="true" allow="autoplay; encrypted-media;" donotallowfullscreen></iframe>
               	</div>
 	        </div>
 	      	<div class="col-md-2">

@@ -250,28 +250,39 @@ a:focus {
 }
 
 .menulist_item:focus {
-     transition: all .2s ease-in-out; 
-     background: rgba( 255 ,59 ,128 , 0.9);
-     transform: scale(1.1);
+	/*transition: all .2s ease-in-out; */
+	background: rgba( 255 ,59 ,128 , 0.9);
+	/*transform: scale(1.1);*/
 }
 
 .sixteen-nine {
   position: relative;
 }
 .sixteen-nine:before {
-  display: block;
+  /*display: block;
   content: "";
-  width: 100%;
+  width: 100%;*/
   padding-top: 56.25%;
+  display: inline-block;
+	content: "";
+	vertical-align: middle;
+	text-align: center;
 }
 .sixteen-nine > .content {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+	/*width: 100%;*/
+	/*position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);*/
+	display: inline-block;
+	text-align: center;
+	vertical-align: middle;
+	width: 100%;
 }
 
 .textformenu{
+	width: 100%;
+	text-align: center;
     color: #FFFFFF;
     font-size: 20px;
 }
