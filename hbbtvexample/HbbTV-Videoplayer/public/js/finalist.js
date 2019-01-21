@@ -27,10 +27,10 @@ window.onload = function() {
 		
 		var totalChildren = listEl.querySelectorAll(".item-containerforfinalist").length;
 		dir === "left" ? ( count < 0 ? ++count : 0 ) : (count <= -(totalChildren-1) ? count : --count);
-		listEl.style.left = count * 18.75 + '%';
+		listEl.style.left = count * 17.2 + '%';
 		btnLeftEl.style.display = count < 0 ? "none" : "none";
 		// Here, 4 is the number displayed at any given time
-		btnRightEl.style.display = count > 2 -totalChildren ? "none" : "none";
+		btnRightEl.style.display = count > 4 -totalChildren ? "none" : "none";
 
 		var currentcount = (count* -1) +1;
 		//var previouscount = (count* -1) -1;//
@@ -75,7 +75,13 @@ window.onload = function() {
 				console.log("RED - Play Video");
 			break;
 			case VK_BLUE:
-				vote();
+
+				var success_div = document.getElementById('bluebuttondiv');
+				console.log('focused_div' + JSON.stringify(success_div,null,2));
+				if(success_div != null){
+					vote();
+				}
+				
 				console.log("BLUE - Fullscreen");
 			break;
 			case VK_GREEN:
@@ -119,13 +125,17 @@ window.onload = function() {
 			break;
 			case VK_ENTER:
 
-				var success_div = document.getElementById('success_popup');
+				// var success_div = document.getElementById('success_popup').style.visibility;
+				var blue_div = document.getElementById('bluebuttondiv');
 
-				if(success_div.style.visibility === "visible"){
-					close_popup();
-				}else{
-					getDataFromVoteButton();
+				if(blue_div != null){
+					if($('#success_popup').is(':visible')){
+						close_popup();
+					}else if($('#success_popup').is(':hidden')){
+						getDataFromVoteButton();
+					}
 				}
+				
 				
 				console.log("ENTER - Ok pressed");
 			break;
@@ -253,6 +263,10 @@ function editdata(response){
 	var videos_array = [];
 
 	var arrayfromJSON = response.options;
+	var vote_activated = response.activated;
+
+	loadLegend(vote_activated);
+
 
 	arrayfromJSON.forEach(function(element) {
 
@@ -383,13 +397,27 @@ function loadCarousel(data){
 	
 }
 
-// function separateData(imgsrc){
+function loadLegend(data) {
+	var legend = document.getElementById('legend');
 
-// 	var datax = allData.filter(x => x.image_url === imgsrc);
-// 	getDataforFinalist(datax[0]);
-	
-// 	console.log('global' + JSON.stringify(allData,null,2));
-// }
+	if(data === true){
+		var bluebuttondiv =  document.createElement("div");
+		bluebuttondiv.setAttribute("id","bluebuttondiv");
+		bluebuttondiv.className = "eachbutton";
+
+		var imgtag = document.createElement("img");
+		imgtag.src = "img/icon/icon/blue-btn.png";
+
+		var ptag= document.createElement("p");
+		ptag.innerHTML = "Vote";
+
+		bluebuttondiv.appendChild(imgtag);
+		bluebuttondiv.appendChild(ptag);
+
+		legend.appendChild(bluebuttondiv);
+	}
+
+}
 
 
 function getDataforFinalist(data){

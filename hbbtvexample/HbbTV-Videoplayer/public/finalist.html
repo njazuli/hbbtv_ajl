@@ -60,7 +60,7 @@ img{
   display: inline-block;
   margin: 10px 10px 0 0;
   vertical-align: top;
-	width: 18.75%;
+	width: 17.2%;
 	background: rgba(55,0,88,0.9);
 }  
 
@@ -212,8 +212,6 @@ img{
 .pageLoading {
     position: relative;
     height: 100%;
-    background: black;
-    opacity: 0.9;
     z-index: 1000000000000000000 !important;
     
 }
@@ -224,12 +222,16 @@ img{
 }
 
 .pageLoading .popup_div{
+  width: 30%;
+  height: 20%;
   position: absolute;
-  top: 40%;
-  left: 35%;
   background: white;
-  border-radius: 4px;
   text-align: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
 }
 
 .pageLoading .popup_div .confirmationtext{
@@ -340,23 +342,25 @@ img{
     		</div>
 
 		<!-- carousel -->
+          <!--  legend -->
+          <div id="legend" class="row legend">
+              <!-- <div class="eachbutton" >
+                <img src="img/icon/icon/blue-btn.png">
+                <p>Vote</p>
+              </div> -->
+              <div class="eachbutton">
+                <img src="img/icon/icon/red-btn.png">
+                <p>Back</p>
+              </div>
+          </div>
+
     </div> 
 
-     <!--  legend -->
-      <div class="row legend">
-          <div class="eachbutton" >
-            <img src="img/icon/icon/blue-btn.png">
-            <p>Vote</p>
-          </div>
-          <div class="eachbutton">
-            <img src="img/icon/icon/red-btn.png">
-            <p>Back</p>
-          </div>
-      </div>
+     
 
 
       <!-- popup for voting -->
-      <div id="popup" class="pageLoading" style="visibility: hidden;" >
+      <div id="popup" class="pageLoading" style="visibility: hidden;background:rgb(0,0,0,0.9)" >
         <div id="confirmation_popup" class="popup_div">
               <div class="confirmationtext">
                 <span>Vote for this artist?</span>
