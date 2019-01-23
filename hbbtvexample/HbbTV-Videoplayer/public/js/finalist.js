@@ -78,7 +78,7 @@ window.onload = function() {
 
 				var success_div = document.getElementById('bluebuttondiv');
 				console.log('focused_div' + JSON.stringify(success_div,null,2));
-				if(success_div != null){
+				if($('#bluebuttondiv').css('display') != 'none'){
 					vote();
 				}
 				
@@ -125,14 +125,17 @@ window.onload = function() {
 			break;
 			case VK_ENTER:
 
-				// var success_div = document.getElementById('success_popup').style.visibility;
+				var success_div = document.getElementById('success_popup').style.display;
+				var popup = document.getElementById('popup').style.visibility;
 				var blue_div = document.getElementById('bluebuttondiv');
 
-				if(blue_div != null){
-					if($('#success_popup').is(':visible')){
+				if($('#bluebuttondiv').css('display') != 'none'){
+					if(success_div === "table"){
 						close_popup();
-					}else if($('#success_popup').is(':hidden')){
+						console.log("in");
+					}else if(popup === "visible" && success_div != "table"){
 						getDataFromVoteButton();
+						console.log("in1");
 					}
 				}
 				
@@ -163,8 +166,8 @@ function close_popup(){
 	var success_popup = document.getElementById('success_popup');
 
 	popup.style.visibility = "hidden";
-	confirmation_popup.style.visibility = "hidden";
-	success_popup.style.visibility = "hidden";
+	confirmation_popup.style.display = "none";
+	success_popup.style.display = "none";
 	popup.tabIndex = "-1";
 	menu.tabindex = "1"
 }
@@ -175,8 +178,8 @@ function vote(){
 	var confirmation_popup = document.getElementById('confirmation_popup');
 	var success_popup = document.getElementById('success_popup');
 	popup.style.visibility = "visible";
-	confirmation_popup.style.visibility = "visible";
-	success_popup.style.visibility = "hidden";
+	confirmation_popup.style.display = "table";
+	success_popup.style.display = "none";
 	popup.tabIndex = "1";
 	menu.tabindex = "-1"
 }
@@ -194,8 +197,8 @@ function getDataFromVoteButton(){
 		popup.style.visibility = "hidden";
 		popup.tabIndex = "-1";
 		menu.tabindex = "1";
-		confirmation_popup.style.visibility = "hidden";
-		success_popup.style.visibility = "hidden";
+		confirmation_popup.style.display = "none";
+		success_popup.style.display = "none";
 	}else if(index === "Yes" ){
 		var index = $(".item-containerforfinalist .active #uuid").text();
 		sendVote(index, "5b8c8942-02d4-4f0b-b6d5-ef23ea52469d", "ajl-count", 0, 1);
@@ -398,24 +401,30 @@ function loadCarousel(data){
 }
 
 function loadLegend(data) {
-	var legend = document.getElementById('legend');
-
+	var legend = document.getElementById('bluebuttonforvote');
 	if(data === true){
-		var bluebuttondiv =  document.createElement("div");
-		bluebuttondiv.setAttribute("id","bluebuttondiv");
-		bluebuttondiv.className = "eachbutton";
-
-		var imgtag = document.createElement("img");
-		imgtag.src = "img/icon/icon/blue-btn.png";
-
-		var ptag= document.createElement("p");
-		ptag.innerHTML = "Vote";
-
-		bluebuttondiv.appendChild(imgtag);
-		bluebuttondiv.appendChild(ptag);
-
-		legend.appendChild(bluebuttondiv);
+		legend.style.display = "inline-block";
+	}else{
+		legend.style.display = "none";
 	}
+
+
+	// if(data === true){
+	// 	var bluebuttondiv =  document.createElement("div");
+	// 	bluebuttondiv.setAttribute("id","bluebuttondiv");
+	// 	bluebuttondiv.className = "eachbutton";
+
+	// 	var imgtag = document.createElement("img");
+	// 	imgtag.src = "img/icon/icon/blue-btn.png";
+
+	// 	var ptag= document.createElement("p");
+	// 	ptag.innerHTML = "Vote";
+
+	// 	bluebuttondiv.appendChild(imgtag);
+	// 	bluebuttondiv.appendChild(ptag);
+
+	// 	legend.appendChild(bluebuttondiv);
+	// }
 
 }
 
@@ -541,8 +550,8 @@ function sweetAlertAfterVote(response,getPollPageCName,refreshRate){
         //open success popup
 
         //if user click no,back to page
-		$("#confirmation_popup").css('visibility', 'hidden');
-		$("#success_popup").css('visibility', 'visible');
+		$("#confirmation_popup").css('display', 'none');
+		$("#success_popup").css('display', 'table');
 
         if(getCookie(getPollPageCName) == '0'){
             $('.'+getPollPageCName.substring(0, getPollPageCName.length - 6)).removeClass('btn-primary').addClass('btn-danger').text('UNDIAN DITUTUP');
