@@ -2,7 +2,7 @@
   "uuid": "5b8c8942-02d4-4f0b-b6d5-ef23ea52469d",
   "name": "AJL 33",
   "description": null,
-  "activated": true,
+  "activated": false,
   "time_start": "2019-01-08 00:00:00",
   "time_end": "2019-01-31 23:59:00",
   "identity_type": "ip",

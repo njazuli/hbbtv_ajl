@@ -76,9 +76,8 @@ window.onload = function() {
 			break;
 			case VK_BLUE:
 
-				var success_div = document.getElementById('bluebuttondiv');
-				console.log('focused_div' + JSON.stringify(success_div,null,2));
-				if($('#bluebuttondiv').css('display') != 'none'){
+				var success_div = document.getElementById('bluebuttonforvote');
+				if(success_div.style.display != 'none'){
 					vote();
 				}
 				
